@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #bdc3c7; /* fallback for old browsers */
+        background: -webkit-linear-gradient(
+          to right,
+          #2c3e50,
+          #bdc3c7
+        ); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(
+          to right,
+          #2c3e50,
+          #bdc3c7
+        ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      }
+      #quiz {
+        box-sizing: border-box;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      h1 {
+        text-align: center;
+        color: white;
+        border: 2px solid black;
+        border-radius: 5px;
+        width: 30%;
+        padding: 20px;
+        letter-spacing: 5px;
+        background: #bdc3c7; /* fallback for old browsers */
+        background: -webkit-linear-gradient(
+          to right,
+          #2c3e50,
+          #bdc3c7
+        ); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(
+          to right,
+          #2c3e50,
+          #bdc3c7
+        ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      }
+      .prashanje {
+        text-align: center;
+        width: 40%;
+        border: 2px solid black;
+        margin: 8px;
+        border-radius: 5px;
+        background-color: rgb(233, 233, 233);
+      }
+      #btn {
+        width: 100px;
+        margin: 30px;
+        padding: 10px;
+        font-size: larger;
+        border-radius: 5px;
+      }
+      .netocno {
+        color: red;
+        border: 5px solid red;
+      }
+      #fin {
+        text-align: center;
+        font-size: 80px;
+      }
+      #btn:hover {
+        color: white;
+        background: #bdc3c7; /* fallback for old browsers */
+        background: -webkit-linear-gradient(
+          to right,
+          #2c3e50,
+          #bdc3c7
+        ); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(
+          to right,
+          #2c3e50,
+          #bdc3c7
+        ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        border-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="" id="quiz">
+      <h1>Quiz</h1>
+
+      <div class="prashanje">
+        <p>Next Number 1,1,2,3,5,8,?</p>
+        <label for="">7.</label>
+        <input type="radio" name="par1" id="par1_7" value="7" />
+        <label for="">10.</label>
+        <input type="radio" name="par1" id="par1_10" value="10" />
+        <label for="">13.</label>
+        <input type="radio" name="par1" id="par1_13" value="13" />
+        <p id="odg1"></p>
+      </div>
+      <div class="prashanje">
+        <p>The result from (5+8)?</p>
+        <label for="">7.</label>
+        <input type="radio" name="par2" id="par2_7" value="7" />
+        <label for="">10.</label>
+        <input type="radio" name="par2" id="par2_10" value="10" />
+        <label for="">13.</label>
+        <input type="radio" name="par2" id="par2_13" value="13" />
+        <p id="odg2"></p>
+      </div>
+      <div class="prashanje">
+        <p>What Is HTML?</p>
+        <input type="text" name="" id="html" />
+        <p id="odg3"></p>
+      </div>
+      <div class="prashanje">
+        <p>What is CSS?</p>
+        <input type="text" name="" id="css" />
+        <p id="odg4"></p>
+      </div>
+      <div class="prashanje">
+        <p>What is WWW?</p>
+        <input type="text" name="" id="www" />
+        <p id="odg5"></p>
+      </div>
+
+      <div class="prashanje">
+        <p>What is DOM i JavaScript?</p>
+        <input type="text" name="" id="dom" />
+        <p id="odg6"></p>
+      </div>
+
+      <div class="prashanje">
+        <p>Web developers are lifetime learners?</p>
+        <label for="">Yes</label>
+        <input type="radio" name="par3" id="parYes" value="Yes" />
+        <label for="">No</label>
+        <input type="radio" name="par3" id="parNo" value="No" />
+
+        <p id="odg7"></p>
+      </div>
+
+      <input type="submit" name="" id="btn" value="submit" />
+    </form>
+    <p id="fin"></p>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <script>
+      $(() => {
+        let rez = 0;
+        $("form").submit(function (e) {
+          e.preventDefault();
+
+          if ($("#par1_13").is(":checked")) {
+            $("#odg1").text("tocen odgovor").css("color", "green");
+            rez++;
+          } else {
+            $("#odg1").text("netocen odgovor").css("color", "red");
+          }
+
+          if ($("#par2_13").is(":checked")) {
+            $("#odg2").text("tocen odgovor").css("color", "green");
+            rez++;
+          } else {
+            $("#odg2").text("netocen odgovor").css("color", "red");
+          }
+
+          if ($("#html").val().toLowerCase() === "hypertext markup language") {
+            $("#odg3").text("tocen odgovor").css("color", "green");
+            rez++;
+          } else {
+            $("#odg3").text("netocen odgovor").css("color", "red");
+          }
+
+          if ($("#css").val().toLowerCase() === "cascading style sheets") {
+            $("#odg4").text("tocen odgovor").css("color", "green");
+            rez++;
+          } else {
+            $("#odg4").text("netocen odgovor").css("color", "red");
+          }
+
+          if ($("#www").val().toLowerCase() === "world wide web") {
+            $("#odg5").text("tocen odgovor").css("color", "green");
+            rez++;
+          } else {
+            $("#odg5").text("netocen odgovor").css("color", "red");
+          }
+
+          if ($("#dom").val().toLowerCase() === "document object model") {
+            $("#odg6").text("tocen odgovor").css("color", "green");
+            rez++;
+          } else {
+            $("#odg6").text("netocen odgovor").css("color", "red");
+          }
+
+          if ($("#parYes").is(":checked")) {
+            $("#odg7").text("tocen odgovor").css("color", "green");
+            rez++;
+          } else {
+            $("#odg7").text("netocen odgovor").css("color", "red");
+          }
+
+          if (rez < 4) {
+            $("#fin").text("Sorry try again").css("color", "red");
+            // $("form").css("background-color","red")
+          } else {
+            $("#fin").text("Well Done");
+            // $("form").css("background-color","green")
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
